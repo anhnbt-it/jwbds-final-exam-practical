@@ -5,6 +5,10 @@
     <title>Cities</title>
 </head>
 <body>
+<div class="clearfix">
+    <h1>Danh sách thành phố</h1>
+    <a th:href="@{/cities/create}" class="float-right btn">Thêm thành phố</a>
+</div>
 <table class="table">
     <thead>
     <th>#</th>
@@ -15,7 +19,9 @@
     <tbody>
     <tr th:each="city : ${cities}">
         <td th:text="${city.id}"></td>
-        <td th:text="${city.name}"></td>
+        <td>
+            <a th:href="@{/cities/{id}(id=${city.id})}" th:text="${city.name}"></a>
+        </td>
         <td th:text="${city.country.name}"></td>
         <td>Chỉnh sửa | Xóa</td>
     </tr>
