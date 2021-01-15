@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <form th:action="@{/cities/delete}" th:object="${city}" method="post">
                         <input type="hidden" th:field="*{id}">
-                        <p class="mb-2">Bạn chắc chăn muốn xóa thành phố <span th:text="${city.name}"></span>?</p>
+                        <p class="mb-2">Bạn chắc chắn muốn xóa thành phố <span th:text="${city.name}"></span>?</p>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-outline-dark mr-1">Xóa</button>
                             <a th:href="@{/cities}" class="btn btn-outline-dark">Thoát</a>

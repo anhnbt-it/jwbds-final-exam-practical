@@ -97,7 +97,7 @@ public class CityController {
     }
 
     @PostMapping("delete")
-    public String edit(@Validated @ModelAttribute("city") City city, RedirectAttributes redirect) {
+    public String edit(@ModelAttribute("city") City city, RedirectAttributes redirect) {
         Optional<City> oldCity = cityService.findById(city.getId());
         if (!oldCity.isPresent()) {
             redirect.addFlashAttribute("message", "Không tìm thấy city có id " + city.getId());
