@@ -85,4 +85,27 @@ public class CityController {
         return "redirect:/cities";
     }
 
+    @GetMapping("delete/{id}")
+    public String deleteById(@PathVariable("id") Long id, Model model, RedirectAttributes redirect) {
+        Optional<City> city = cityService.findById(id);
+        if (!city.isPresent()) {
+            redirect.addFlashAttribute("message", "Không tìm thấy city có id " + id);
+            return "redirect:/cities";
+        }
+        model.addAttribute("city", city.get());
+        return "cities/delete";
+    }
+
+    @PostMapping("delete")
+    public String edit(@Validated @ModelAttribute("city") City city, RedirectAttributes redirect) {
+        Optional<City> oldCity = cityService.findById(city.getId());
+        if (!oldCity.isPresent()) {
+            redirect.addFlashAttribute("message", "Không tìm thấy city có id " + city.getId());
+            return "redirect:/cities";
+        }
+        redirect.addFlashAttribute("message", "Xóa thành phố " + city.getName() + " thành công!");
+        cityService.deleteById(city.getId());
+        return "redirect:/cities";
+    }
+
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Chỉnh sửa thành phố' +${city.name}"></title>
+    <title>Thêm thành phố</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h1>Chỉnh sửa thành phố <span th:text="${city.name}"></span></h1>
+                    <h1>Thêm thành phố</h1>
                 </div>
                 <div class="card-body">
                     <div th:if="${#fields.hasErrors('${city.*}')}" class="alert alert-danger">
@@ -20,7 +20,7 @@
                             </li>
                         </ul>
                     </div>
-                    <form th:action="@{/cities/edit}" th:object="${city}" method="post">
+                    <form th:action="@{/cities/create}" th:object="${city}" method="post">
                         <input type="hidden" th:field="*{id}">
                         <div class="row form-group">
                             <label class="col-form-label col-md-2">Tên</label>
@@ -72,11 +72,9 @@
                                 <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="invalid-feedback"></p>
                             </div>
                         </div>
-                        <div class="row form-group">
-                            <div class="col-md-10 offset-2">
-                                <button type="submit" class="btn btn-outline-dark mr-1">Cập nhật</button>
-                                <a th:href="@{/cities}" class="btn btn-outline-dark">Thoát</a>
-                            </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-outline-dark mr-1">Nhập thành phố</button>
+                            <a th:href="@{/cities}" class="btn btn-outline-dark">Thoát</a>
                         </div>
                     </form>
                 </div><!-- /.card-body -->

@@ -1,6 +1,7 @@
 package com.codegym.springbootexam.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class City {
@@ -8,13 +9,26 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
     private String name;
+
     @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "id")
+    @JoinColumn(name = "country_id", referencedColumnName = "id", nullable = false)
     private Country country;
+
+    @Column(nullable = false)
+    @NotEmpty
     private String dienTich;
+
+    @Column(nullable = false)
+    @NotEmpty
     private String danSo;
+
+    @Column(nullable = false)
+    @NotEmpty
     private String gdp;
+
     private String description;
 
     public Long getId() {
