@@ -23,4 +23,9 @@ public class CityServiceImpl implements CityService {
     public Optional<City> findById(Long id) {
         return cityRepository.findById(id);
     }
+
+    @Override
+    public City save(City city) {
+        return cityRepository.save(city);
+    }
 }
